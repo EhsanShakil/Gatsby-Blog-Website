@@ -1,8 +1,14 @@
 import React from "react";
 import Header from "../components/Header/Header";
+import BlogPost from "../templates/blog-post";
 
 function index() {
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <BlogPost />
+    </>
+  );
 }
 
 export default index;
