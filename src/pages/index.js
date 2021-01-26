@@ -1,7 +1,8 @@
 import React from "react";
+import Header from "../components/Header/Header";
 
 function index() {
-  return <h1>Gatsby Blog Website</h1>;
+  return <Header />;
 }
 
 export default index;
