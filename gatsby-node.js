@@ -27,3 +27,16 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 };
+
+exports.createPages = async function ({ actions }) {
+  actions.createPage({
+    path: "my-dynamic-page",
+    component: require.resolve(`./src/templates/dynamic-page.js`),
+    context: {
+      // Data passed to context is available
+      // in pageContext props of the template component
+      name: "gatsby nodejs file",
+    },
+  });
+  console.log("End of Gatsby Node File");
+};
