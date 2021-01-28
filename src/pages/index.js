@@ -1,14 +1,30 @@
 import React from "react";
 import Header from "../components/Header/Header";
-// import BlogPost from "../templates/dynamic-page";
+import { graphql } from "gatsby";
 
-function index() {
+function index({ data }) {
+  console.log(data);
   return (
-    <>
+    <div>
       <Header />
-      {/* <BlogPost /> */}
-    </>
+      {data.allContentfulBlogPost.nodes.map((data, index) => (
+        <h1 key={index}>{data.title}</h1>
+      ))}
+    </div>
   );
 }
 
 export default index;
+
+export const query = graphql`
+  query MyQuery {
+    allContentfulBlogPost {
+      nodes {
+        title
+        content {
+          raw
+        }
+      }
+    }
+  }
+`;

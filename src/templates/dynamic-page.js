@@ -1,10 +1,11 @@
 import React from "react";
 
 export default ({ pageContext }) => {
+  console.log(pageContext.name);
   return (
     <div>
-      <div>Hello Dynamic Page from {pageContext.name}</div>
-      <div>This page is create dynamically at Build Time</div>
+      <p>Hello Dynamic Page from {pageContext.name}</p>
+      <p>This page is create dynamically at Build Time</p>
     </div>
   );
 };

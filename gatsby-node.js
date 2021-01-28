@@ -1,28 +1,25 @@
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const result = await graphql(`
-    query {
+  const result = await graphql`
+    query MyQuery {
       allContentfulBlogPost {
-        edges {
-          node {
-            title
-            content {
-              raw
-            }
-            contentful_id
+        nodes {
+          title
+          content {
+            raw
           }
         }
       }
     }
-  `);
-  console.log(result);
-  const data = result.data.allContentfulBlogPost.edges;
-  data.map((data) => {
+  `;
+
+  const data = result.data.allContentfulBlogPost.nodes;
+  data.map((details) => {
     createPage({
-      path: data.node.title,
+      path: "blogs",
       component: require.resolve(`./src/templates/blog-post.js`),
       context: {
-        data: data.node,
+        data: details.title,
       },
     });
   });
