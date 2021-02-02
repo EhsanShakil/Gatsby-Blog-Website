@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../components/Header/Header";
+import Layout from "../components/Layout/Layout";
 
 function index() {
-  return <Header />;
+  return <Layout>Home Page</Layout>;
 }
 
 export default index;
