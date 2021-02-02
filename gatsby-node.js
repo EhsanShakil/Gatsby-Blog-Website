@@ -1,29 +1,29 @@
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
-  const result = await graphql`
-    query MyQuery {
-      allContentfulBlogPost {
-        nodes {
-          title
-          content {
-            raw
-          }
-        }
-      }
-    }
-  `;
+// exports.createPages = async ({ graphql, actions }) => {
+//   const { createPage } = actions;
+//   const result = await graphql`
+//     query MyQuery {
+//       allContentfulBlogPost {
+//         nodes {
+//           title
+//           content {
+//             raw
+//           }
+//         }
+//       }
+//     }
+//   `;
 
-  const data = result.data.allContentfulBlogPost.nodes;
-  data.map((details) => {
-    createPage({
-      path: "blogs",
-      component: require.resolve(`./src/templates/blog-post.js`),
-      context: {
-        data: details.title,
-      },
-    });
-  });
-};
+//   const data = result.data.allContentfulBlogPost.nodes;
+//   data.map((details) => {
+//     createPage({
+//       path: "blogs",
+//       component: require.resolve(`./src/templates/blog-post.js`),
+//       context: {
+//         data: details.title,
+//       },
+//     });
+//   });
+// };
 
 exports.createPages = async function ({ actions }) {
   actions.createPage({
