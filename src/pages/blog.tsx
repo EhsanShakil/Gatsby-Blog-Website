@@ -1,19 +1,20 @@
 import React from "react";
 import Layout from "../components/Layout/Layout";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 function blog({ data }) {
   const repsonse = data.allContentfulBlogPost.edges;
-  console.log(data.allContentfulBlogPost.edges);
-
   return (
     <Layout>
       <div>
         <h1>Blog Post</h1>
         <h2>
-          {repsonse.map((blog, index) => (
+          {repsonse.map((blog: any, index: any) => (
             <div key={index}>
-              <h2>{blog.node.title}</h2>
+              <h4>{blog.node.title}</h4>
+              <p>{blog.node.publicationDate}</p>
+              <p>{blog.node.excerpt.excerpt}</p>
+              <Link to={`/blog/${blog.node.slug}/`}>Read Mode</Link>
             </div>
           ))}
         </h2>
@@ -32,7 +33,7 @@ export const data = graphql`
           title
           slug
           id
-          publicationDate(formatString: "")
+          publicationDate(formatString: "DD-MM-YYYY")
           excerpt {
             excerpt
           }
