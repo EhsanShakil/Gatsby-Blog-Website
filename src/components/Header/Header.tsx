@@ -9,11 +9,28 @@ const Header = () => {
           Gatsby Blog
         </Link>
       </h2>
-      <h3 className="pages">
-        <Link to="/blog" className="pages">
-          Blog Post
-        </Link>
-      </h3>
+      <div className="nav">
+        <h3 className="pages">
+          <Link to="/" className="pages">
+            Home
+          </Link>
+        </h3>
+        <h3 className="pages">
+          <Link to="/blog" className="pages">
+            Blog Post
+          </Link>
+        </h3>
+        <h3 className="pages">
+          <Link to="/about" className="pages">
+            About
+          </Link>
+        </h3>
+        <h3 className="pages">
+          <Link to="/privacy" className="pages">
+            Privacy Policy
+          </Link>
+        </h3>
+      </div>
     </div>
   );
 };
