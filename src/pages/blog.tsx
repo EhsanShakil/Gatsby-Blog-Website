@@ -11,9 +11,9 @@ function blog({ data }) {
         <h2>
           {repsonse.map((blog: any, index: any) => (
             <div key={index}>
-              <h4>{blog.node.title}</h4>
-              <p>{blog.node.publicationDate}</p>
+              <p>{blog.node.title}</p>
               <p>{blog.node.excerpt.excerpt}</p>
+              <img src={blog.node.featuredImage.file.url} alt="Article Image" />
               <Link to={`/blog/${blog.node.slug}/`}>Read Mode</Link>
             </div>
           ))}
@@ -26,7 +26,7 @@ function blog({ data }) {
 export default blog;
 
 export const data = graphql`
-  query {
+  query MyQuery {
     allContentfulBlogPost {
       edges {
         node {
@@ -37,8 +37,13 @@ export const data = graphql`
           excerpt {
             excerpt
           }
-          body {
-            raw
+          description {
+            description
+          }
+          featuredImage {
+            file {
+              url
+            }
           }
         }
       }

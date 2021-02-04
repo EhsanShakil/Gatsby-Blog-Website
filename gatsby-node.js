@@ -3,7 +3,7 @@ const path = require("path");
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const response = await graphql(`
-    query {
+    query MyQuery {
       allContentfulBlogPost {
         edges {
           node {
@@ -16,6 +16,14 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             body {
               raw
+            }
+            description {
+              description
+            }
+            featuredImage {
+              file {
+                url
+              }
             }
           }
         }
